@@ -1,17 +1,14 @@
 package com.jumarket.service
 
 import com.jumarket.domain.Cart
-import com.jumarket.domain.Product
 import com.jumarket.domain.Terminal
 import com.jumarket.dto.CartRequest
-import com.jumarket.dto.CartResponse
 import com.jumarket.dto.ProductSummary
 import com.jumarket.dto.RootProductSummary
 import com.jumarket.repository.CartRepository
 import com.jumarket.repository.ProductRepository
 import com.jumarket.repository.TerminalRepository
 import org.springframework.stereotype.Service
-import java.util.Objects
 import java.util.Optional
 
 @Service
@@ -26,8 +23,6 @@ class CartService(private val productRepository: ProductRepository, private val 
             if (product.isPresent) {
                 val cartDomain = Cart(terminalId = terminal.id, product = product.get())
                 cartRepository.save(cartDomain)
-            } else {
-                // Lógica para lidar com o produto não encontrado, se necessário
             }
         }
 
